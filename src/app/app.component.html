@@ -1,10 +1,21 @@
-<div class="container">
+<div>
   <mat-toolbar class="toolbar" color="primary">
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
     <span>{{ title }}</span>
-    <span class="flex-spacer"></span>
+    &nbsp;
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="{{'Search'}}">
+    </form>
+    <ul class="navbar-nav ml-auto">
+        &nbsp;
+      <a routerLink="/products" class="nav-link mt-1" style="color: azure">
+        Products
+      </a>
+      &nbsp;
+      <a routerLink="/orders" class="nav-link mt-1" style="color: azure">
+        Orders
+      </a>
+      &nbsp;
+    </ul>
     <span fxFlex></span>
     <div>
       <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -14,20 +25,13 @@
         <button mat-menu-item> Ukrainian </button>
         <button mat-menu-item> English </button>
       </mat-menu>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/cart">
         <mat-icon>local_grocery_store</mat-icon>
       </button>
     </div>
   </mat-toolbar>
 </div>
 
-<div class="row">
-  <div class="col-md-3">
-    <app-book-list></app-book-list>
-  </div>
-  <div class="col-md-3">
-    <app-cart></app-cart>
-  </div>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

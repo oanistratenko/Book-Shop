@@ -19,4 +19,3 @@ Tasks from 6 lesson
       totalQuantity: <- общее количество
       totalSum:      <- общая сумма
     }
-
