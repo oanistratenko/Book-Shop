@@ -1,34 +1,46 @@
-<p></p>
-<div class="order-container" fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="600px" color="primary">
-    <form fxLayout="column">
-      <mat-card-header>
-        <mat-card-title fxLayoutAlign="center">
-          <div class="mat-headline">Оформление заказа</div>
-        </mat-card-title>
-      </mat-card-header>
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <mat-icon>account_box</mat-icon>
-        <mat-form-field fxFlex>
-          <input matInput value={{FullName}} placeholder="Full Name" type="text">
-        </mat-form-field>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <mat-icon>email</mat-icon>
-        <mat-form-field fxFlex>
-          <input matInput value={{Email}} placeholder="e-mail" type="text">
-        </mat-form-field>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <mat-icon matPrefix>phone</mat-icon>
-        <mat-form-field fxFlex>
-          <input matInput value={{Phone}} placeholder="Mobile phone" type="text">
-        </mat-form-field>
-      </div>
-      <div fxLayout="row" class="margin-top">
-        <div class="flex-spacer"></div>
-        <button mat-button type="submit">Send</button>
-      </div>
-    </form>
+<div class="order-container" fxLayout="row" fxLayoutAlign="center" fxLayout="row wrap" fxLayoutGap="10px">
+  <mat-card fxFlex="600px">
+    <mat-card-title>
+      Оформление заказа
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="orderForm" (ngSubmit)="onFormSubmit(orderForm.value)">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon>account_box</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="fullName" id="fullNameId" type="text" matInput placeholder="Full Name">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!orderForm.get('fullName').valid && orderForm.get('fullName').touched">Please enter Full Name
+              !!!</span>
+          </mat-error>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon>email</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="email" id="emailId" type="text" matInput placeholder="e-mail">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon matPrefix>phone</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="phone" id="phoneId" type="text" matInput placeholder="Mobile phone">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon matPrefix>date_range</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="deliveryDate" matInput [matDatepicker]="picker" placeholder="Delivery date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" class="margin-top">
+          <div class="flex-spacer"></div>
+          <button mat-button type="submit" color="accent" [disabled]="!orderForm.valid">Send</button>
+        </div>
+
+      </form>
+    </mat-card-content>
   </mat-card>
 </div>

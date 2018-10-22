@@ -1,12 +1,8 @@
 <div>
   <mat-toolbar class="toolbar" color="primary">
     <span>{{ title }}</span>
-    &nbsp;
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="{{'Search'}}">
-    </form>
     <ul class="navbar-nav ml-auto">
-        &nbsp;
+      &nbsp;
       <a routerLink="/products" class="nav-link mt-1" style="color: azure">
         Products
       </a>
@@ -16,6 +12,10 @@
       </a>
       &nbsp;
     </ul>
+    &nbsp;
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="{{'Search'}}">
+    </form>
     <span fxFlex></span>
     <div>
       <button mat-icon-button [matMenuTriggerFor]="menu">

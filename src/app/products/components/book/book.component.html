@@ -1,10 +1,13 @@
-<div>
-  <div>Id:{{book.id}}</div>
-  <div>Name: {{book.name | titlecase}}</div>
-  <div>Price: {{book.price | currency:'USD'}}</div>
-  <div><img class="icon-img" [src]="book.img"></div>
-
-  <button appHighlight (click)="onBuy($event)">
-      Купить
-  </button>
+<div fxFlex="1 1 calc(18% - 10px)">
+  <mat-card class="book-card" color="primary">
+    <mat-card-header>
+      <mat-card-title>{{book.name | titlecase}}</mat-card-title>
+      <mat-card-subtitle>Code: {{book.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src={{book.img}}>
+    <mat-card-actions>
+      {{book.price | currency: 'USD'}}
+      <button mat-button appHighlight (click)="onBuy($event)">Купить</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
