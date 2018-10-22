@@ -1,0 +1,4 @@
+<app-book *ngFor="let book of booksP | async"
+  [book]="book"
+  (buy)="onBuy($event)">
+</app-book>

@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-toolbar class="toolbar" color="primary">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="flex-spacer"></span>
+    <span fxFlex></span>
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item> Ukrainian </button>
+        <button mat-menu-item> English </button>
+      </mat-menu>
+      <button mat-icon-button>
+        <mat-icon>local_grocery_store</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <app-book-list></app-book-list>
+  </div>
+  <div class="col-md-3">
+    <app-cart></app-cart>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

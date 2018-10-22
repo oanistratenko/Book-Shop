@@ -1,0 +1,10 @@
+<div>
+  <div>Id:{{book.id}}</div>
+  <div>Name: {{book.name | titlecase}}</div>
+  <div>Price: {{book.price | currency:'USD'}}</div>
+  <div><img class="icon-img" [src]="book.img"></div>
+
+  <button appHighlight (click)="onBuy($event)">
+      Купить
+  </button>
+</div>

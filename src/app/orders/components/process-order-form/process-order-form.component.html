@@ -1,0 +1,34 @@
+<p></p>
+<div class="order-container" fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="600px" color="primary">
+    <form fxLayout="column">
+      <mat-card-header>
+        <mat-card-title fxLayoutAlign="center">
+          <div class="mat-headline">Оформление заказа</div>
+        </mat-card-title>
+      </mat-card-header>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <mat-icon>account_box</mat-icon>
+        <mat-form-field fxFlex>
+          <input matInput value={{FullName}} placeholder="Full Name" type="text">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <mat-icon>email</mat-icon>
+        <mat-form-field fxFlex>
+          <input matInput value={{Email}} placeholder="e-mail" type="text">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <mat-icon matPrefix>phone</mat-icon>
+        <mat-form-field fxFlex>
+          <input matInput value={{Phone}} placeholder="Mobile phone" type="text">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" class="margin-top">
+        <div class="flex-spacer"></div>
+        <button mat-button type="submit">Send</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

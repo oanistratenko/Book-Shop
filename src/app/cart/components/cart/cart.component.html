@@ -1,0 +1,9 @@
+<div *ngIf="allQuantity">
+  <app-cart-item [cartItem]="cartItem" *ngFor="let cartItem of cartItems" (del)="onDelete($event)" (plus)="onPlus($event)"
+    (minus)="onMinus($event)"></app-cart-item>
+
+  <div>Всего заказано книг: {{allQuantity}}</div>
+  <div>На общую сумму: {{allPrice}}</div>
+
+  <button class="btn btn-primary" (click)="onCreateOrder()">Оформить</button>
+</div>

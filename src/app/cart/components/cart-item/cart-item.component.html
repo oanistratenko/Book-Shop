@@ -1,0 +1,13 @@
+<div class="item">
+  <button mat-icon-button>
+    <img class="icon-img" [src]="cartItem.img">
+  </button>
+  <div>
+    <div>{{ cartItem.name | titlecase }}</div>
+    <div>{{ cartItem.price | currency:'USD' }}</div>
+    <button mat-icon-button (click)="onPlusCount($event)">+</button>
+    <button mat-icon-button (click)="onMinusCount($event)">-</button>
+    <button mat-icon-button (click)="onDelete($event)">x</button>
+  </div>
+</div>
+
