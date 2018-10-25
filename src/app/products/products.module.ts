@@ -7,7 +7,11 @@ import {
   MatIconModule
 } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
-import { BookComponent, BookListComponent } from './components';
+import {
+  BookComponent,
+  BookListComponent,
+  BookDetailsComponent
+} from './components';
 
 @NgModule({
   imports: [
@@ -18,7 +22,7 @@ import { BookComponent, BookListComponent } from './components';
     MatIconModule,
     SharedModule
   ],
-  declarations: [BookComponent, BookListComponent],
+  declarations: [BookComponent, BookListComponent, BookDetailsComponent],
   exports: [BookListComponent]
 })
 export class ProductsModule {}

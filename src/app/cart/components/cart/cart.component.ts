@@ -1,5 +1,7 @@
-import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { CartService } from './../../services/cart.service';
 import { CartItemModel } from '../../models/cart-item.model';
 
 @Component({
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit {
   allQuantity: number;
   allPrice: number;
 
-  constructor(private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.getCartItems();
@@ -23,6 +25,10 @@ export class CartComponent implements OnInit {
   onPlus(cartItem: CartItemModel): void {
     console.log(`[CartComponent]: ${cartItem.name}`);
     this.cartService.incQuantity(cartItem);
+    this.update();
+  }
+
+  private update() {
     this.allQuantity = this.cartService.allQuantity;
     this.allPrice = this.cartService.allPrice;
   }
@@ -30,15 +36,13 @@ export class CartComponent implements OnInit {
   onMinus(cartItem: CartItemModel): void {
     console.log(`[CartComponent]: ${cartItem.name}`);
     this.cartService.decQuantity(cartItem);
-    this.allQuantity = this.cartService.allQuantity;
-    this.allPrice = this.cartService.allPrice;
+    this.update();
   }
 
   onDelete(cartItem: CartItemModel): void {
     console.log(`[CartComponent удаление]: ${cartItem.name}`);
     this.cartService.delFromCart(cartItem);
-    this.allQuantity = this.cartService.allQuantity;
-    this.allPrice = this.cartService.allPrice;
+    this.update();
   }
 
   onCreateOrder() {
@@ -53,5 +57,7 @@ export class CartComponent implements OnInit {
         );
       }
     }
+    const link = ['/order'];
+    this.router.navigate(link);
   }
 }

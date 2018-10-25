@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BookListComponent } from './products/components';
+import { BookListComponent, BookDetailsComponent } from './products/components';
 import { CartComponent } from './cart/components';
 import { ProcessOrderFormComponent } from './orders/components';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: 'orders',
+    path: 'order',
     component: ProcessOrderFormComponent
   },
   {
@@ -15,14 +16,20 @@ const routes: Routes = [
     component: CartComponent
   },
   {
-    path: 'products',
+    path: 'book/:id',
+    component: BookDetailsComponent
+  },
+  {
+    path: 'books',
     component: BookListComponent
   },
   {
     path: '',
-    redirectTo: '/products',
+    redirectTo: '/books',
     pathMatch: 'full'
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
+
 ];
 
 @NgModule({
