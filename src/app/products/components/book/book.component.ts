@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BookModel } from '../../models/book.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -13,7 +14,7 @@ export class BookComponent implements OnInit {
   @Output()
   buy: EventEmitter<BookModel> = new EventEmitter<BookModel>();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     console.log(`[ngOnInit]`);
@@ -21,7 +22,12 @@ export class BookComponent implements OnInit {
 
   onBuy(event: any) {
     console.log(`Товар куплен ${this.book.name}`);
-    console.log(event);
     this.buy.emit(this.book);
   }
+
+  onViewDetails(event: any): void {
+    const link = ['/book', this.book.id];
+    this.router.navigate(link);
+  }
+
 }

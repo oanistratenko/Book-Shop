@@ -1,0 +1,25 @@
+{
+  "books": [
+  {"id": 1, "name": "Angular  development", "price": 10, "img": "img1.jpg"},
+  {"id": 2, "name": "CSS styles", "price": 20, "img": "img2.jpg"},
+  {"id": 3, "name": "HTML practice", "price": 40, "img": "img3.jpg"},
+  {"id": 4, "name": "C# 5 .NET", "price": 15, "img": "img4.jpg"},
+  {"id": 5, "name": "PostgreSQL", "price": 25, "img": "img5.jpg"},
+  {"id": 6, "name": "PHP", "price": 34, "img": "img6.jpg"},
+  {"id": 7, "name": "Linux", "price": 18, "img": "img7.jpg"},
+  {"id": 8, "name": "Rust", "price": 22, "img": "img8.jpg"},
+  {"id": 9, "name": "Pro Java", "price": 17, "img": "img9.jpg"},
+  {"id": 10, "name": "JAVA Generics", "price": 19, "img": "img10.jpg"},
+  {"id": 11, "name": "Java Network", "price": 30, "img": "img11.jpg"},
+  {"id": 12, "name": "Oracle Pl/Sql", "price": 42, "img": "img12.jpg"},
+  {"id": 13, "name": "Learning Oracle", "price": 16, "img": "img13.jpg"},
+  {"id": 14, "name": "Oracle 2nd Edition", "price": 24, "img": "img14.jpg"},
+  {"id": 15, "name": "Pro Git", "price": 21, "img": "img15.jpg"},
+  {"id": 16, "name": "Git for teams", "price": 26, "img": "img16.jpg"}
+  ],
+  "cartitems": [
+    {"id": 1, "name": "Angular  development", "price": 10, "img": "img1.jpg", "quantity": 1},
+    {"id": 2, "name": "CSS styles", "price": 20, "img": "img2.jpg", "quantity": 1},
+    {"id": 14, "name": "Oracle 2nd Edition", "price": 24, "img": "img14.jpg", "quantity": 1}
+  ]
+}

@@ -1,3 +1,20 @@
-<p>
-  book-details works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form id="book-form">
+      <div class="form-group">
+          <mat-card class="book-card" color="primary">
+              <mat-card-header>
+                <mat-card-title>{{book.name | titlecase}}</mat-card-title>
+                <mat-card-subtitle>Code: {{book.id}}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src={{book.img}}>
+              <mat-card-content>Книга идеально подойдёт тем, кто уже освоил синтаксис и основные возможности языка, но пока «плавает» в алгоритмах. С этой книгой можно сосредоточиться на практических навыках, создании чистого и, главное, рабочего кода.</mat-card-content>
+              <mat-card-footer>{{book.price | currency: 'USD'}}</mat-card-footer>
+              <mat-card-actions>
+                <button type="button" class="btn btn-primary" (click)="onGoBack()">Back</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+    </form>
+  </div>
+</div>

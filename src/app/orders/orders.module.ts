@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-import { SharedModule } from '../shared/shared.module';
 import { ProcessOrderFormComponent } from './components';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { ProcessOrderFormComponent } from './components';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    SharedModule
+    MatNativeDateModule
   ],
   declarations: [ProcessOrderFormComponent],
   exports: [ProcessOrderFormComponent]

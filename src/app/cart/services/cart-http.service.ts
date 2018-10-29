@@ -1,11 +1,13 @@
 import { BookModel } from './../../products/models/book.model';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { CartItemModel } from '../models/cart-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartHttpService {
   cartItems = [
     new CartItemModel(1, 'Angular development and debug', 10, 'img1.jpg', 1),
     new CartItemModel(2, 'CSS styles', 20, 'img2.jpg', 1)
@@ -25,12 +27,46 @@ export class CartService {
     this._allPrice = value;
   }
 
-  constructor() {}
+  private cartsUrl = 'http://localhost:3000/cartitems';
+
+  constructor(private http: HttpClient) {}
+
+  // Реализовать сервис CartHttpService c двумя методами:
+  // getCartItems(): Promise<Array<CartItemModel>>. Использовать get метод.
+  // addToCart(book: BookModel): Promise<CartItemModel>. Использовать post метод.
+
+  // getTasks(): Promise<TaskModel[]> {
+  //   return this.http
+  //     .get(this.tasksUrl)
+  //     .toPromise()
+  //     .then(response => <TaskModel[]>response)
+  //     .catch(this.handleError);
+  // }
+
+  getCartItems(): Promise<CartItemModel[]> {
+    const url = `${this.cartsUrl}`;
+
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => <CartItemModel[]>response)
+      .catch(this.handleError);
+  }
+
+  getCartItem(id: number): Promise<CartItemModel> {
+    const url = `${this.cartsUrl}/${id}`;
+
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => <CartItemModel>response)
+      .catch(this.handleError);
+  }
 
   // для получения списка товаров в корзине
-  getCartItems(): Array<CartItemModel> {
-    return this.cartItems;
-  }
+  // getCartItems(): Array<CartItemModel> {
+  //   return this.cartItems;
+  // }
 
   findCartItem(id: number): CartItemModel {
     for (let i = 0; i < this.cartItems.length; i++) {
@@ -110,5 +146,10 @@ export class CartService {
   decQuantity(cartItem: CartItemModel, n: number = 1) {
     this.delFromCart(cartItem);
     this.updateTotals();
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

@@ -4,15 +4,14 @@
       Оформление заказа
     </mat-card-title>
     <mat-card-content>
-      <form [formGroup]="orderForm" (ngSubmit)="onFormSubmit(orderForm.value)">
+      <form [formGroup]="orderForm" (ngSubmit)="onFormSubmit()">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <mat-icon>account_box</mat-icon>
           <mat-form-field fxFlex>
             <input formControlName="fullName" id="fullNameId" type="text" matInput placeholder="Full Name">
           </mat-form-field>
           <mat-error>
-            <span *ngIf="!orderForm.get('fullName').valid && orderForm.get('fullName').touched">Please enter Full Name
-              !!!</span>
+            <span *ngIf="!orderForm.get('fullName').valid && orderForm.get('fullName').touched">Please enter Full Name!!!</span>
           </mat-error>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
@@ -26,6 +25,9 @@
           <mat-form-field fxFlex>
             <input formControlName="phone" id="phoneId" type="text" matInput placeholder="Mobile phone">
           </mat-form-field>
+          <mat-error>
+            <span *ngIf="!orderForm.get('phone').valid && orderForm.get('phone').touched">Value has to be as: +38(0XX)ХХХ-ХХ-ХХ</span>
+          </mat-error>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <mat-icon matPrefix>date_range</mat-icon>
@@ -34,6 +36,9 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi="true" #picker></mat-datepicker>
           </mat-form-field>
+          <mat-error>
+            <span *ngIf="!orderForm.get('deliveryDate').valid && orderForm.get('deliveryDate').touched">Delivery date has to be from next day till seven day</span>
+          </mat-error>
         </div>
         <div fxLayout="row" class="margin-top">
           <div class="flex-spacer"></div>

@@ -8,6 +8,7 @@
     <mat-card-actions>
       {{book.price | currency: 'USD'}}
       <button mat-button appHighlight (click)="onBuy($event)">Купить</button>
+      <button mat-button (click)="onViewDetails($event)">Подробности</button>
     </mat-card-actions>
   </mat-card>
 </div>

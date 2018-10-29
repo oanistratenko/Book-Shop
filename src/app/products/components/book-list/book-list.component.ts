@@ -12,16 +12,27 @@ import { CartService } from '../../../cart/services/cart.service';
 export class BookListComponent implements OnInit {
   booksP: Promise<Array<BookModel>>;
   books: Array<BookModel>;
+  router: any;
 
-  constructor(private booksService: BooksService, private cartService: CartService) {}
+  constructor(
+    private booksService: BooksService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     // this.booksService.getBooksAsync().then(books => (this.books = books));
-    this.booksP = this.booksService.getBooksAsync();
+    this.booksP = this.booksService.getBooks();
   }
 
   onBuy(book: BookModel): void {
     console.log(`[BookListComponent]: ${book.name}`);
     this.cartService.addToCart(book);
+  }
+
+  onViewDetails(book: BookModel): void {
+    console.log(event);
+    const link = ['/book', book.id];
+    console.log(link);
+    this.router.navigate(link);
   }
 }

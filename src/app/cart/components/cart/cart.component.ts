@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CartService } from './../../services/cart.service';
+import { CartHttpService } from './../../services/cart-http.service';
 import { CartItemModel } from '../../models/cart-item.model';
 
 @Component({
@@ -10,14 +11,21 @@ import { CartItemModel } from '../../models/cart-item.model';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartItems: Array<CartItemModel>;
+  // cartItems: Array<CartItemModel>;
+  cartItems: Promise<Array<CartItemModel>>;
+
+
   allQuantity: number;
   allPrice: number;
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private cartHttpService: CartHttpService
+  ) {}
 
   ngOnInit() {
-    this.cartItems = this.cartService.getCartItems();
+    this.cartItems = this.cartHttpService.getCartItems();
     this.allQuantity = this.cartService.allQuantity;
     this.allPrice = this.cartService.allPrice;
   }

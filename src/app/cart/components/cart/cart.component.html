@@ -1,9 +1,20 @@
-<div *ngIf="allQuantity">
-  <app-cart-item [cartItem]="cartItem" *ngFor="let cartItem of cartItems" (del)="onDelete($event)" (plus)="onPlus($event)"
-    (minus)="onMinus($event)"></app-cart-item>
+<div class="order-container" fxLayout="row" fxLayoutAlign="center" fxLayout="row wrap" fxLayoutGap="10px">
+  <mat-card fxFlex="600px">
+    <mat-card-title>
+      Выбранные книги:
+    </mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onCreateOrder()">
+        <div *ngIf="allQuantity">
+          <app-cart-item [cartItem]="cartItem" *ngFor="let cartItem of cartItems | async" (del)="onDelete($event)" (plus)="onPlus($event)"
+            (minus)="onMinus($event)"></app-cart-item>
 
-  <div>Всего заказано книг: {{allQuantity}}</div>
-  <div>На общую сумму: {{allPrice}}</div>
+          <div>Всего заказано книг: {{allQuantity}}</div>
+          <div>На общую сумму: {{allPrice}}</div>
 
-  <button class="btn btn-primary" (click)="onCreateOrder()">Оформить</button>
+          <button class="btn btn-primary" (click)="onCreateOrder()">Оформить</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

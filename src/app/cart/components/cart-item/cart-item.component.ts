@@ -31,7 +31,6 @@ export class CartItemComponent implements OnInit {
   onPlusCount(event: any) {
     this.count++;
     console.log(`Товар добавлен ${this.cartItem.name} : ${this.count}`);
-    console.log(event);
     this.plus.emit(this.cartItem);
   }
 
@@ -39,7 +38,6 @@ export class CartItemComponent implements OnInit {
     if (this.count > 0) {
       this.count--;
       console.log(`Товар удален ${this.cartItem.name} : ${this.count}`);
-      console.log(event);
       this.minus.emit(this.cartItem);
     }
   }
